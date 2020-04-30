@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package scheme;
+
+option go_package = ".;scheme";
+
+message Request{
+    string Address = 1;
+    string Login = 2;
+    string Password = 3;
+
+}
+message Address{
+    string Address = 1;
+}
+message Login{
+    string Login = 1;
+}
+message Password{
+    string Password = 1;
+}
+message Answer{
+    bool Allow = 1;
+}
+service EventsHandler {
+    rpc CheckAll (Request) returns (Answer);
+    rpc CheckAddress (Address) returns (Answer);
+    rpc CheckPassword (Password) returns (Answer);
+    rpc CheckLogin (Login) returns (Answer);
+}
